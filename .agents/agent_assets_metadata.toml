@@ -1,0 +1,56 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "10ObJEtqk4lLY9kJee9Hm"
+uri = "file://attached_assets/hero-bg.png"
+type = "image"
+title = "Workshop night hero background"
+
+[[generated]]
+id = "l2AhorqJFRKQ7LWaky59X"
+uri = "file://attached_assets/product-ocean.png"
+type = "image"
+title = "Ocean wave dining table"
+
+[[generated]]
+id = "gzuzyv7B9iwsf4Rcp1O_L"
+uri = "file://attached_assets/product-river.png"
+type = "image"
+title = "Liquid gold river table"
+
+[[generated]]
+id = "bU59Db2Q8_tms2v2oiSwF"
+uri = "file://attached_assets/product-chair.png"
+type = "image"
+title = "Amber resin chair"
+
+[[generated]]
+id = "cS9zZ9SLjn7E7NhMFtZtf"
+uri = "file://attached_assets/product-art.png"
+type = "image"
+title = "Abstract resin wall art"
+
+[[generated]]
+id = "ejgvTYFUGSnrmVGa55rIM"
+uri = "file://attached_assets/product-coffee.png"
+type = "image"
+title = "Black epoxy coffee table"
+
+[[generated]]
+id = "Z2irZwFFnGkImuODWsMbM"
+uri = "file://attached_assets/product-console.png"
+type = "image"
+title = "White resin console table"
+
+[[generated]]
+id = "vDZR-h-5LC426IOJBZLbo"
+uri = "file://attached_assets/product-emerald.png"
+type = "image"
+title = "Emerald resin end table"
+
+[[generated]]
+id = "tmOfoP7gJpg8bB-JfI1yP"
+uri = "file://attached_assets/product-copper.png"
+type = "image"
+title = "Copper resin dining table"
