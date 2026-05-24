@@ -42,9 +42,9 @@ export default function Catalog() {
               {categories?.map(cat => (
                 <button
                   key={cat.id}
-                  onClick={() => setActiveCategory(cat.slug)}
+                  onClick={() => setActiveCategory(cat.name)}
                   className={`px-4 py-2 text-sm uppercase tracking-widest transition-colors ${
-                    activeCategory === cat.slug 
+                    activeCategory === cat.name 
                       ? "text-primary border-b-2 border-primary" 
                       : "text-muted-foreground hover:text-foreground"
                   }`}

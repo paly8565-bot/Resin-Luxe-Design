@@ -3,34 +3,14 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroBg from "@assets/hero-bg.png";
-import productOcean from "@assets/product-ocean.png";
-import productRiver from "@assets/product-river.png";
-import productChair from "@assets/product-chair.png";
+import { useGetFeaturedCollection, getGetFeaturedCollectionQueryKey } from "@workspace/api-client-react";
 
 export default function Home() {
-  const featured = [
-    {
-      id: 1,
-      name: "Abyssal Dining Table",
-      price: 12500,
-      image: productOcean,
-      category: "Dining Tables"
-    },
-    {
-      id: 2,
-      name: "Aurelia River Table",
-      price: 8900,
-      image: productRiver,
-      category: "Coffee Tables"
-    },
-    {
-      id: 3,
-      name: "Amber Resonance Chair",
-      price: 3200,
-      image: productChair,
-      category: "Seating"
-    }
-  ];
+  const { data: collection, isLoading } = useGetFeaturedCollection({
+    query: { queryKey: getGetFeaturedCollectionQueryKey() }
+  });
+
+  const featuredProducts = collection?.featuredProducts ?? [];
 
   return (
     <Layout>
@@ -80,34 +60,58 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featured.map((item, i) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.2 }}
-                className="group cursor-pointer"
-              >
-                <Link href={`/product/${item.id}`}>
-                  <div className="relative aspect-[4/5] overflow-hidden mb-6 bg-card">
-                    <img 
-                      src={item.image} 
-                      alt={item.name}
-                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-xs uppercase tracking-widest text-primary">{item.category}</p>
-                    <h3 className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
-                    <p className="text-muted-foreground tracking-wide">${item.price.toLocaleString()}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="animate-pulse">
+                  <div className="bg-card aspect-[4/5] mb-6" />
+                  <div className="h-3 bg-card w-1/4 mb-3" />
+                  <div className="h-6 bg-card w-2/3 mb-2" />
+                  <div className="h-4 bg-card w-1/4" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {featuredProducts.slice(0, 6).map((item, i) => (
+                <motion.div 
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: i * 0.2 }}
+                  className="group cursor-pointer"
+                  data-testid={`card-featured-${item.id}`}
+                >
+                  <Link href={`/product/${item.id}`}>
+                    <div className="relative aspect-[4/5] overflow-hidden mb-6 bg-card">
+                      <img 
+                        src={item.imageUrls[0]} 
+                        alt={item.name}
+                        className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                      {item.originalPrice && (
+                        <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs px-3 py-1 tracking-widest uppercase font-semibold">
+                          Sale
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-xs uppercase tracking-widest text-primary">{item.category}</p>
+                      <h3 className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                      <div className="flex items-center gap-3">
+                        <span className="text-muted-foreground tracking-wide">${item.price.toLocaleString()}</span>
+                        {item.originalPrice && (
+                          <span className="text-muted-foreground/50 line-through text-sm">${item.originalPrice.toLocaleString()}</span>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
