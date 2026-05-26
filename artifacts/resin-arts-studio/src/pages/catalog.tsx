@@ -108,9 +108,9 @@ export default function Catalog() {
                       <p className="text-xs uppercase tracking-widest text-primary">{product.category}</p>
                       <h3 className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors">{product.name}</h3>
                       <div className="flex items-center justify-center gap-3">
-                        <span className="text-muted-foreground tracking-wide">${product.price.toLocaleString()}</span>
+                        <span className="text-muted-foreground tracking-wide">₹{product.price.toLocaleString("en-IN")}</span>
                         {product.originalPrice && (
-                          <span className="text-muted-foreground/50 line-through text-sm">${product.originalPrice.toLocaleString()}</span>
+                          <span className="text-muted-foreground/50 line-through text-sm">₹{product.originalPrice.toLocaleString("en-IN")}</span>
                         )}
                       </div>
                     </div>

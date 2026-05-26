@@ -50,13 +50,13 @@ export default function OrderConfirmation() {
                       <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
                     </div>
                   </div>
-                  <p className="text-foreground">${(item.price * item.quantity).toLocaleString()}</p>
+                  <p className="text-foreground">₹{(item.price * item.quantity).toLocaleString("en-IN")}</p>
                 </div>
               ))}
               
               <div className="border-t border-border pt-6 mt-6 flex justify-between items-center">
                 <span className="font-serif text-xl">Total</span>
-                <span className="font-serif text-xl text-primary">${order.total.toLocaleString()}</span>
+                <span className="font-serif text-xl text-primary">₹{order.total.toLocaleString("en-IN")}</span>
               </div>
             </div>
           </div>

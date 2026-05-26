@@ -101,9 +101,9 @@ export default function Home() {
                       <p className="text-xs uppercase tracking-widest text-primary">{item.category}</p>
                       <h3 className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
                       <div className="flex items-center gap-3">
-                        <span className="text-muted-foreground tracking-wide">${item.price.toLocaleString()}</span>
+                        <span className="text-muted-foreground tracking-wide">₹{item.price.toLocaleString("en-IN")}</span>
                         {item.originalPrice && (
-                          <span className="text-muted-foreground/50 line-through text-sm">${item.originalPrice.toLocaleString()}</span>
+                          <span className="text-muted-foreground/50 line-through text-sm">₹{item.originalPrice.toLocaleString("en-IN")}</span>
                         )}
                       </div>
                     </div>

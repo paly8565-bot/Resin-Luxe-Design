@@ -67,7 +67,7 @@ export default function Cart() {
                           <h3 className="font-serif text-xl text-foreground">{item.productName}</h3>
                           {item.selectedSize && <p className="text-sm text-muted-foreground mt-1">Size: {item.selectedSize}</p>}
                         </div>
-                        <p className="text-lg text-foreground">${(item.price * item.quantity).toLocaleString()}</p>
+                        <p className="text-lg text-foreground">₹{(item.price * item.quantity).toLocaleString("en-IN")}</p>
                       </div>
                       <div className="flex justify-between items-end mt-4">
                         <div className="flex items-center border border-border bg-card">
@@ -105,7 +105,7 @@ export default function Cart() {
                 <div className="space-y-4 mb-8">
                   <div className="flex justify-between text-muted-foreground">
                     <span>Subtotal</span>
-                    <span>${cart.subtotal.toLocaleString()}</span>
+                    <span>₹{cart.subtotal.toLocaleString("en-IN")}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
                     <span>Shipping</span>
@@ -113,7 +113,7 @@ export default function Cart() {
                   </div>
                   <div className="border-t border-border pt-4 flex justify-between text-lg font-medium text-foreground">
                     <span>Estimated Total</span>
-                    <span>${cart.subtotal.toLocaleString()}</span>
+                    <span>₹{cart.subtotal.toLocaleString("en-IN")}</span>
                   </div>
                 </div>
                 <Button 

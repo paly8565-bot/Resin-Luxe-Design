@@ -148,14 +148,14 @@ export default function Checkout() {
                         <p className="font-medium text-foreground">{item.productName}</p>
                         <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
                       </div>
-                      <p className="font-medium">${(item.price * item.quantity).toLocaleString()}</p>
+                      <p className="font-medium">₹{(item.price * item.quantity).toLocaleString("en-IN")}</p>
                     </div>
                   ))}
                 </div>
                 <div className="border-t border-border pt-6 space-y-4">
                   <div className="flex justify-between text-muted-foreground">
                     <span>Subtotal</span>
-                    <span>${cart.subtotal.toLocaleString()}</span>
+                    <span>₹{cart.subtotal.toLocaleString("en-IN")}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
                     <span>Shipping</span>
@@ -163,7 +163,7 @@ export default function Checkout() {
                   </div>
                   <div className="flex justify-between text-xl font-serif text-primary pt-4">
                     <span>Total</span>
-                    <span>${cart.subtotal.toLocaleString()}</span>
+                    <span>₹{cart.subtotal.toLocaleString("en-IN")}</span>
                   </div>
                 </div>
               </div>

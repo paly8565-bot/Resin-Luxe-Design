@@ -88,7 +88,7 @@ export default function ProductDetail() {
               <div className="mb-8">
                 <p className="text-primary text-sm tracking-widest uppercase mb-4">{product.category}</p>
                 <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-4">{product.name}</h1>
-                <p className="text-2xl text-muted-foreground mb-6">${product.price.toLocaleString()}</p>
+                <p className="text-2xl text-muted-foreground mb-6">₹{product.price.toLocaleString("en-IN")}</p>
                 <p className="text-muted-foreground leading-relaxed">{product.description}</p>
               </div>
 
